@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Páginas Errantes · Librería online</title>
+<meta name="description" content="Librería online con libros que se mueven. Encuentra tu próxima lectura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#inicio">Páginas Errantes</a>
+  <nav><a href="#catalogo">Catálogo</a><a href="#pie">Contacto</a></nav>
+  <button class="cart-btn" id="openCart" aria-label="Abrir carrito">Carrito <span id="cartCount">0</span></button>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <h1>Cada libro es un viaje.<br>Elige el tuyo.</h1>
+    <p>Novela, ciencia, tecnología y clásicos. Mueve el mouse y mira cómo despiertan las portadas.</p>
+    <a class="btn" href="#catalogo">Ver catálogo</a>
+  </div>
+  <div class="stage" id="stage" aria-hidden="true"></div>
+</section>
+
+<section class="catalog" id="catalogo">
+  <div class="tools">
+    <input type="search" id="search" placeholder="Busca por título o autor" aria-label="Buscar libros">
+    <div class="chips" id="chips"></div>
+    <select id="sort" aria-label="Ordenar">
+      <option value="rel">Destacados</option>
+      <option value="asc">Precio: menor a mayor</option>
+      <option value="desc">Precio: mayor a menor</option>
+      <option value="rate">Mejor valorados</option>
+    </select>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No encontramos libros con esa búsqueda. Prueba otra palabra o cambia de categoría.</p>
+</section>
+</main>
+
+<footer id="pie"><p>Páginas Errantes · Proyecto de ejemplo hecho con HTML, CSS y JavaScript.</p></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito">
+  <div class="drawer-head"><h2>Tu carrito</h2><button id="closeCart" aria-label="Cerrar">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+    <button class="btn wide" id="checkout">Finalizar compra</button>
+    <button class="link" id="clearCart">Vaciar carrito</button>
+  </div>
+</aside>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" hidden></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
