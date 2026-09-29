@@ -44,7 +44,6 @@ nav{display:flex;gap:1.4rem}nav a{color:var(--mut);text-decoration:none;font-siz
 .spine{width:var(--d);height:100%;left:0;background:var(--c1);filter:brightness(.65);transform-origin:left center;transform:translateZ(calc(var(--d)/-2)) rotateY(-90deg)}
 .back{inset:0;background:var(--c2);filter:brightness(.6);transform:translateZ(calc(var(--d)/-2))}
 .hero .book{--w:170px;--h:250px}
-.float.big{z-index:2}.float.big .book{--w:215px;--h:310px;--d:46px}.float.big .cover{border:1px solid #e3e8f7}
 .sm .book{--w:110px;--h:162px;--d:24px}
 .sm .cover b{font-size:.85rem}.sm .cover{padding:10px}
 
