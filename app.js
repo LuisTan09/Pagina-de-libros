@@ -23,8 +23,9 @@ const byId = id => BOOKS.find(b => b.id == id);
 
 /* ===== Componentes ===== */
 const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+const COVER = {img:'portada.png',c1:'#9db4e8',c2:'#dfe7fb'};
 const bookHTML = b => `<div class="book" style="--c1:${b.c1};--c2:${b.c2}"><div class="back"></div><div class="spine"></div>
-  <div class="cover" style="background:linear-gradient(150deg,${b.c1},${b.c2})"><small>${b.a}</small><b>${b.t}</b><i></i></div></div>`;
+  <div class="cover" style="background:${b.img ? `#fff url(${b.img}) center/88% no-repeat` : `linear-gradient(150deg,${b.c1},${b.c2})`}">${b.img ? '' : `<small>${b.a}</small><b>${b.t}</b><i></i>`}</div></div>`;
 const priceHTML = b => `<span class="price">${b.o ? `<s>${money(b.o)}</s>` : ''}${money(b.p)}</span>`;
 const cardHTML = (b, i = 0) => `<article class="card" style="animation-delay:${i * 40}ms">
   ${b.o ? `<span class="badge">-${Math.round((1 - b.p / b.o) * 100)}%</span>` : b.n ? '<span class="badge new">Nuevo</span>' : ''}
@@ -33,8 +34,8 @@ const cardHTML = (b, i = 0) => `<article class="card" style="animation-delay:${i
   ${priceHTML(b)}<div class="row"><button class="view" data-view="${b.id}">Ver más</button><button class="add" data-add="${b.id}">Añadir</button></div></article>`;
 
 /* ===== Hero con parallax ===== */
-$('#stage').innerHTML = [[1,'4%','40px','0s'],[5,'28%','130px','-1.5s'],[3,'52%','10px','-3s'],[9,'74%','150px','-4.5s']]
-  .map(([id,l,t,dl]) => `<div class="float" style="left:${l};top:${t};animation-delay:${dl}">${bookHTML(byId(id))}</div>`).join('');
+$('#stage').innerHTML = [[1,'0%','70px','0s',''],[0,'23%','50px','-1.5s','big'],[3,'52%','20px','-3s',''],[9,'75%','160px','-4.5s','']]
+  .map(([id,l,t,dl,k]) => `<div class="float ${k}" style="left:${l};top:${t};animation-delay:${dl}">${bookHTML(id ? byId(id) : COVER)}</div>`).join('');
 $('#inicio').addEventListener('mousemove', e => {
   const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
   $$('.stage .book').forEach((bk, i) => bk.style.transform = `rotateY(${28 + x * (i + 1) * 24}deg) rotateX(${-y * (i + 1) * 12}deg)`);
