@@ -11,9 +11,9 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="ann"><div class="marq"><span>Envío gratis desde $40</span><span>Devoluciones en 15 días</span><span>Pago seguro</span><span>Nuevos títulos cada semana</span><span>Envío gratis desde $40</span><span>Devoluciones en 15 días</span><span>Pago seguro</span><span>Nuevos títulos cada semana</span></div></div>
+<div class="ann"><div class="marq" id="marq"></div></div>
 <header class="top">
-  <a class="logo" href="#inicio">CondeGátula</a>
+  <a class="logo" href="#inicio" data-t="brand"></a>
   <nav><a href="#categorias">Categorías</a><a href="#ofertas">Ofertas</a><a href="#catalogo">Catálogo</a><a href="#opiniones">Opiniones</a><a href="#faq">Ayuda</a></nav>
   <button class="ic" id="openFav" aria-label="Favoritos">♡ <span id="favCount">0</span></button>
   <button class="cart-btn" id="openCart" aria-label="Abrir carrito">Carrito <span id="cartCount">0</span></button>
@@ -22,53 +22,42 @@
 <main>
 <section class="hero" id="inicio">
   <div class="hero-text">
-    <h1>Cada libro es un viaje. Elige el tuyo.</h1>
-    <p>Más de mil títulos de novela, ciencia, tecnología y clásicos, con envío rápido a todo el país.</p>
-    <div class="cta"><a class="btn" href="#catalogo">Explorar catálogo</a><a class="btn ghost" href="#ofertas">Ver ofertas</a></div>
+    <p class="kicker" data-t="hero.kicker"></p>
+    <h1><span data-t="hero.pre"></span> <span class="word" id="word"></span></h1>
+    <div class="wchips" id="wchips"></div>
+    <p class="sub" data-t="hero.sub"></p>
+    <div class="cta"><a class="btn" href="#catalogo" data-t="hero.cta1"></a><a class="btn ghost" href="#ofertas" data-t="hero.cta2"></a></div>
   </div>
-  <div class="stage" id="stage" aria-hidden="true"></div>
+  <div class="catstage" id="catstage">
+    <img class="cloud c1" src="portada.png" alt="" aria-hidden="true">
+    <img class="cloud c2" src="portada.png" alt="" aria-hidden="true">
+    <div class="catbox" id="catbox"></div>
+    <div class="brush" id="brushBar"></div>
+  </div>
 </section>
 
-<section class="perks">
-  <div><b>Envío gratis</b><span>En compras desde $40</span></div>
-  <div><b>Pago seguro</b><span>Tarjeta, transferencia o contra entrega</span></div>
-  <div><b>Devoluciones</b><span>15 días sin preguntas</span></div>
-  <div><b>Soporte real</b><span>Lunes a sábado, 8:00 a 18:00</span></div>
-</section>
+<section class="perks" id="perks"></section>
 
-<section class="sec" id="categorias">
-  <h2>Compra por categoría</h2>
-  <div class="cats" id="catTiles"></div>
-</section>
+<section class="sec" id="categorias"><h2 data-t="sections.cats"></h2><div class="cats" id="catTiles"></div></section>
 
 <section class="sec" id="top">
-  <div class="sec-head"><h2>Más vendidos</h2><div class="arrows"><button data-sc="-1" aria-label="Anterior">‹</button><button data-sc="1" aria-label="Siguiente">›</button></div></div>
+  <div class="sec-head"><h2 data-t="sections.top"></h2><div class="arrows"><button data-sc="-1" aria-label="Anterior">‹</button><button data-sc="1" aria-label="Siguiente">›</button></div></div>
   <div class="rail" id="rail"></div>
 </section>
 
 <section class="month" id="mes"></section>
-
-<section class="numbers" id="numbers">
-  <div><strong data-to="12500">0</strong><span>lectores felices</span></div>
-  <div><strong data-to="1200">0</strong><span>títulos disponibles</span></div>
-  <div><strong data-to="48">0</strong><span>ciudades con entrega</span></div>
-  <div><strong data-to="98">0</strong><span>% de reseñas positivas</span></div>
-</section>
+<section class="numbers" id="numbers"></section>
 
 <section class="promo" id="ofertas">
-  <div>
-    <h2>Semana de lectura: hasta 25% de descuento</h2>
-    <p>Usa el código <b>LEE25</b> al finalizar tu compra. La oferta termina en:</p>
-    <div class="count" id="count"></div>
-  </div>
+  <div><h2 data-t="promo.title"></h2><p data-t="promo.text"></p><div class="count" id="count"></div></div>
   <div class="promo-books" id="promoBooks"></div>
 </section>
 
 <section class="sec catalog" id="catalogo">
-  <h2>Catálogo completo</h2>
+  <h2 data-t="sections.catalog"></h2>
   <div class="tools">
     <input type="search" id="search" placeholder="Busca por título o autor" aria-label="Buscar libros">
-    <label class="rng">Hasta <b id="maxOut">$40</b><input type="range" id="max" min="5" max="40" value="40" step="1"></label>
+    <label class="rng">Hasta <b id="maxOut"></b><input type="range" id="max" min="1" max="40" value="40" step="1"></label>
     <label class="chk"><input type="checkbox" id="onlyOffer"> Solo ofertas</label>
     <select id="sort" aria-label="Ordenar"><option value="rel">Destacados</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option><option value="rate">Mejor valorados</option></select>
   </div>
@@ -78,37 +67,22 @@
   <p class="empty" id="empty" hidden>No encontramos libros con esos filtros. Amplía el precio o cambia de categoría.</p>
 </section>
 
-<section class="sec" id="opiniones">
-  <h2>Lo que dicen nuestros lectores</h2>
-  <div class="quotes">
-    <blockquote>“Llegó en dos días y perfectamente empacado. Ya es mi librería de cabecera.”<cite>Camila R. · Manizales</cite></blockquote>
-    <blockquote>“Encontré ediciones que no veía en ningún lado, y el soporte respondió en minutos.”<cite>Andrés M. · Cuenca</cite></blockquote>
-    <blockquote>“Los descuentos de la semana de lectura son reales. Compré cinco libros por el precio de tres.”<cite>Valentina P. · Bogotá</cite></blockquote>
-  </div>
-</section>
-
-<section class="sec faq" id="faq">
-  <h2>Preguntas frecuentes</h2>
-  <details><summary>¿Cuánto tarda el envío?</summary><p>Entre 2 y 5 días hábiles según tu ciudad. Recibirás un número de seguimiento por correo.</p></details>
-  <details><summary>¿Puedo devolver un libro?</summary><p>Sí. Tienes 15 días desde la entrega, siempre que el libro esté en buen estado.</p></details>
-  <details><summary>¿Cómo funciona el código de descuento?</summary><p>Escríbelo en el carrito antes de finalizar. LEE25 descuenta 15% sobre el total mientras dure la oferta.</p></details>
-  <details><summary>¿Qué medios de pago aceptan?</summary><p>Tarjeta de crédito o débito, transferencia bancaria y pago contra entrega en ciudades principales.</p></details>
-</section>
+<section class="sec" id="opiniones"><h2 data-t="sections.reviews"></h2><div class="quotes" id="quotes"></div></section>
+<section class="sec faq" id="faq"><h2 data-t="sections.faq"></h2><div id="faqList"></div></section>
 
 <section class="news">
-  <h2>Recibe una novedad cada semana</h2>
-  <p>Recomendaciones, lanzamientos y cupones exclusivos. Sin spam.</p>
-  <form id="newsForm" novalidate><input type="email" id="email" placeholder="tu@correo.com" aria-label="Correo electrónico"><button class="btn">Suscribirme</button></form>
+  <h2 data-t="news.title"></h2><p data-t="news.text"></p>
+  <form id="newsForm" novalidate><input type="email" id="email" placeholder="tu@correo.com" aria-label="Correo electrónico"><button class="btn" data-t="news.btn"></button></form>
   <small id="newsMsg" role="status"></small>
 </section>
 </main>
 
 <footer id="pie">
-  <div><b class="logo">CondeGátula</b><p>Librería online independiente. Hecha para quienes leen de todo.</p></div>
+  <div><b class="logo" data-t="brand"></b><p data-t="footer.about"></p></div>
   <div><b>Tienda</b><a href="#catalogo">Catálogo</a><a href="#ofertas">Ofertas</a><a href="#top">Más vendidos</a></div>
   <div><b>Ayuda</b><a href="#faq">Preguntas frecuentes</a><a href="#faq">Envíos</a><a href="#faq">Devoluciones</a></div>
-  <div><b>Contacto</b><a href="mailto:hola@paginaserrantes.com">hola@paginaserrantes.com</a><span>Lun a sáb, 8:00 a 18:00</span></div>
-  <p class="copy">© 2026 CondeGátula · Proyecto de ejemplo.</p>
+  <div><b>Contacto</b><a id="mail" href="#" data-t="footer.email"></a><span data-t="footer.hours"></span></div>
+  <p class="copy"><span data-t="footer.copy"></span> · <a href="#admin" id="adminLink">Administrador</a></p>
 </footer>
 
 <div class="overlay" id="overlay"></div>
@@ -116,6 +90,11 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" hidden></div>
 <div class="toast" id="toast" role="status"></div>
 <button class="up" id="up" aria-label="Volver arriba">↑</button>
+
+<script src="firebase-config.js"></script>
+<script src="content.js"></script>
 <script src="app.js"></script>
+<script src="cats.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>
